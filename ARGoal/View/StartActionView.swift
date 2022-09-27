@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import ARKit
+import RealityKit
 
 // MARK: - 開始
 
 struct StartActionView: View {
     
+    @ObservedObject var vm: ViewModel
     @State private var showMyGoal: Bool = false
     
     var body: some View {
@@ -42,13 +45,43 @@ struct StartActionView: View {
                     .onTapGesture {
                         self.showMyGoal = true
                     }
-                    .sheet(isPresented: self.$showMyGoal, content: {
-                        ARViewContainer(vm: ViewModel())
+                    .fullScreenCover(isPresented: self.$showMyGoal, content: {
+                        StartActionARViewContainer(vm: vm)
+                            .onAppear(perform: {
+                                vm.onLoad()
+                            })
                     })
             }
             .padding(.top, 100)
             .padding([.horizontal, .bottom], 16)
             .navigationBarHidden(true)
         }
+    }
+}
+
+struct StartActionARViewContainer: UIViewRepresentable {
+
+    let vm: ViewModel
+
+    func makeUIView(context: Context) -> ARView {
+
+        let arView = ARView(frame: .zero)
+        context.coordinator.arView = arView
+        arView.session.delegate = context.coordinator
+        
+        vm.onLoad = {
+            context.coordinator.loadWorldMap()
+        }
+        vm.onClear = {
+            context.coordinator.clearWorldMap()
+        }
+
+        return arView
+    }
+
+    func updateUIView(_ uiView: ARView, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(vm: vm)
     }
 }

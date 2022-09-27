@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import ARKit
+import RealityKit
 
 // MARK: - 位置設定
 
@@ -34,7 +36,7 @@ struct SettingPositionView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                ARViewContainer(vm: vm)
+                SettingPositionARViewContainer(vm: vm)
                 
                 HStack {
                     Button(action: {
@@ -46,11 +48,40 @@ struct SettingPositionView: View {
                     NavigationLink(destination: SettingNotificationView(vm: vm)) {
                         NextButtonView()
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        vm.onSave()
+                    })
                 }
             }
             .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)
             .navigationBarHidden(true)
         }
+    }
+}
+
+struct SettingPositionARViewContainer: UIViewRepresentable {
+
+    let vm: ViewModel
+
+    func makeUIView(context: Context) -> ARView {
+
+        let arView = ARView(frame: .zero)
+        arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
+                                                           action: #selector(Coordinator.tapped)))
+        context.coordinator.arView = arView
+        arView.session.delegate = context.coordinator
+        
+        vm.onSave = {
+            context.coordinator.saveWorldMap()
+        }
+
+        return arView
+    }
+
+    func updateUIView(_ uiView: ARView, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(vm: vm)
     }
 }
