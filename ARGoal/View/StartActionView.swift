@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-/*
- TODO: -
- ・「はじめる」でランダム画面へ遷移（目標設定済みフラグで管理）
- */
-/* 開始 */
+// MARK: - 開始
+
 struct StartActionView: View {
+    
+    @State private var showMyGoal: Bool = false
     
     var body: some View {
         
@@ -40,10 +39,16 @@ struct StartActionView: View {
                 
                 Spacer()
                 StartButtonView()
+                    .onTapGesture {
+                        self.showMyGoal = true
+                    }
+                    .sheet(isPresented: self.$showMyGoal, content: {
+                        ARViewContainer(vm: ViewModel())
+                    })
             }
-            .navigationBarHidden(true)
             .padding(.top, 100)
             .padding([.horizontal, .bottom], 16)
+            .navigationBarHidden(true)
         }
     }
 }

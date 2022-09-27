@@ -16,6 +16,7 @@
 		D31AEEAC28DD83CC004B4C2A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AEEAB28DD83CC004B4C2A /* SplashView.swift */; };
 		D31AEEAF28DD8863004B4C2A /* StartActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AEEAE28DD8863004B4C2A /* StartActionView.swift */; };
 		D33F40C528CAB66E00FF51ED /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F40C428CAB66E00FF51ED /* ViewModel.swift */; };
+		D3558F9F28E2F8A60062B04C /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3558F9E28E2F8A60062B04C /* ARView.swift */; };
 		D3783A7728E25D4000283805 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = D3783A7628E25D4000283805 /* Experience.rcproject */; };
 		D3D12FBE28B1D9D60069DCF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D12FBD28B1D9D60069DCF4 /* AppDelegate.swift */; };
 		D3D12FC028B1D9D60069DCF4 /* SettingGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */; };
@@ -39,6 +40,7 @@
 		D31AEEAE28DD8863004B4C2A /* StartActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartActionView.swift; sourceTree = "<group>"; };
 		D3349F4028DD585700D8BF5E /* ARGoal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ARGoal.entitlements; sourceTree = "<group>"; };
 		D33F40C428CAB66E00FF51ED /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		D3558F9E28E2F8A60062B04C /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		D3783A7628E25D4000283805 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		D3D12FBA28B1D9D60069DCF4 /* ARGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D12FBD28B1D9D60069DCF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,15 @@
 				D3F01E4F28CC326600DEC0A2 /* SettingNotificationView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		D3558FA028E2F90A0062B04C /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				D319AB2A28D29B6200C043A0 /* ARViewContainer.swift */,
+				D3558F9E28E2F8A60062B04C /* ARView.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		D3D12FB128B1D9D60069DCF4 = {
@@ -128,11 +139,11 @@
 		D3F01E5128CC339100DEC0A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D319AB2A28D29B6200C043A0 /* ARViewContainer.swift */,
 				D31AEEAB28DD83CC004B4C2A /* SplashView.swift */,
-				D31AEEAE28DD8863004B4C2A /* StartActionView.swift */,
-				D31AEEB228DD8A6F004B4C2A /* Setting */,
 				D315F39A28CE9ABB009D963F /* ViewParts */,
+				D3558FA028E2F90A0062B04C /* AR */,
+				D31AEEB228DD8A6F004B4C2A /* Setting */,
+				D31AEEAE28DD8863004B4C2A /* StartActionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +239,7 @@
 				D31AEEAA28DD6B4E004B4C2A /* BackButtonView.swift in Sources */,
 				D3D12FC028B1D9D60069DCF4 /* SettingGoalView.swift in Sources */,
 				D315F3A028CEAF88009D963F /* StartButtonView.swift in Sources */,
+				D3558F9F28E2F8A60062B04C /* ARView.swift in Sources */,
 				D3F01E5728CC4CA000DEC0A2 /* NextButtonView.swift in Sources */,
 				D3783A7728E25D4000283805 /* Experience.rcproject in Sources */,
 				D31AEEAF28DD8863004B4C2A /* StartActionView.swift in Sources */,

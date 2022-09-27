@@ -8,7 +8,8 @@
 import SwiftUI
 import UserNotifications
 
-/* 通知設定 */
+// MARK: - 通知設定
+
 struct SettingNotificationView: View {
     
     @ObservedObject var vm: ViewModel
@@ -56,7 +57,7 @@ struct SettingNotificationView: View {
                     })
                 }
             }
-            .padding(.top, 100)
+            .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)
             .navigationBarHidden(true)
         }
