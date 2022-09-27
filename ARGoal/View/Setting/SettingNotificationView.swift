@@ -8,10 +8,6 @@
 import SwiftUI
 import UserNotifications
 
-/*
- TODO: -
- ・時間を0埋めにする
- */
 /* 通知設定 */
 struct SettingNotificationView: View {
     
@@ -54,16 +50,15 @@ struct SettingNotificationView: View {
                     Spacer()
                     NavigationLink(destination: StartActionView()) {
                         NextButtonView()
-                            .onTapGesture {
-                                vm.setPushNotification()
-                            }
                     }
-                    .isDetailLink(false)
-                    .navigationBarHidden(true)
+                    .simultaneousGesture(TapGesture().onEnded {
+                        vm.setPushNotification()
+                    })
                 }
             }
             .padding(.top, 100)
             .padding([.horizontal, .bottom], 16)
+            .navigationBarHidden(true)
         }
     }
 }
