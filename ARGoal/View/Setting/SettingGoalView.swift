@@ -8,7 +8,8 @@
 import SwiftUI
 import Combine
 
-/* 目標設定 */
+// MARK: - 目標設定
+
 struct SettingGoalView: View {
     
     @ObservedObject var vm = ViewModel()
@@ -81,7 +82,7 @@ struct SettingGoalView: View {
                         }.hidden()
                     }
                 }
-                .padding(.top, 100)
+                .padding(.top, 80)
                 .padding([.horizontal, .bottom], 16)
                 .navigationBarHidden(true)
             }

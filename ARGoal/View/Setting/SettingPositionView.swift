@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-/* 目標を掲げる位置設定 */
+// MARK: - 位置設定
+
 struct SettingPositionView: View {
     
     @ObservedObject var vm: ViewModel
@@ -49,7 +50,7 @@ struct SettingPositionView: View {
                     .navigationBarHidden(true)
                 }
             }
-            .padding(.top, 100)
+            .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)
         }
     }
