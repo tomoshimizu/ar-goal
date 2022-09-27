@@ -21,8 +21,7 @@ struct TimeEditPicker: View {
                 
                 Picker("", selection: $vm.pushHour) {
                     ForEach((1..<24).reversed(), id: \.self) {
-                        Text(String($0))
-                            .tag($0)
+                        Text(String(format: "%02d", $0)).tag($0)
                     }
                 }
                 .accentColor(Color(hex: ColorCode.theme))
@@ -31,10 +30,9 @@ struct TimeEditPicker: View {
                     .foregroundColor(Color(hex: ColorCode.theme))
                     .font(Font.custom(FontName.higaMaruProNW4, size: 20))
                 
-                Picker("", selection: $vm.pushHour) {
+                Picker("", selection: $vm.pushMinute) {
                     ForEach((1..<59).reversed(), id: \.self) {
-                        Text(String($0))
-                            .tag($0)
+                        Text(String(format: "%02d", $0)).tag($0)
                     }
                 }
                 .accentColor(Color(hex: ColorCode.theme))

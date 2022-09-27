@@ -45,12 +45,11 @@ struct SettingPositionView: View {
                     NavigationLink(destination: SettingNotificationView(vm: vm)) {
                         NextButtonView()
                     }
-                    .isDetailLink(false)
-                    .navigationBarHidden(true)
                 }
             }
             .padding(.top, 100)
             .padding([.horizontal, .bottom], 16)
+            .navigationBarHidden(true)
         }
     }
 }
