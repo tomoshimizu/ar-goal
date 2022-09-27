@@ -49,7 +49,7 @@ struct SettingNotificationView: View {
                         BackButtonView()
                     })
                     Spacer()
-                    NavigationLink(destination: StartActionView()) {
+                    NavigationLink(destination: StartActionView(vm: vm)) {
                         NextButtonView()
                     }
                     .simultaneousGesture(TapGesture().onEnded {

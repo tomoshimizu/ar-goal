@@ -31,7 +31,7 @@ struct TimeEditPicker: View {
                     .font(Font.custom(FontName.higaMaruProNW4, size: 20))
                 
                 Picker("", selection: $vm.pushMinute) {
-                    ForEach((1..<59).reversed(), id: \.self) {
+                    ForEach((0..<59).reversed(), id: \.self) {
                         Text(String(format: "%02d", $0)).tag($0)
                     }
                 }

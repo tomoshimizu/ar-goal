@@ -10,7 +10,7 @@ import Foundation
 struct Message {
     static let settingGoal = "目標を決めましょう"
     static let settingGoalDescription = "なりたい自分をイメージして"
-    static let settingGoalError = "目標を10文字以内で入力してください"
+    static let settingGoalError = "目標を15文字以内で入力してください"
     static let settingPosition = "目標を掲げましょう"
     static let settingPositionDescription = "カメラを壁の方に向け、\n目標を掲げたい場所をタップしてください"
     static let settingNotification = "通知時間を設定しましょう"
