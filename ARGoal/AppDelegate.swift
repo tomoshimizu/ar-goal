@@ -8,6 +8,10 @@
 import UIKit
 import SwiftUI
 
+/*
+ TODO: -
+ ・Push通知から開いたらStartActionARViewを開く
+ */
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
