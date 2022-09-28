@@ -161,7 +161,7 @@ class Coordinator: NSObject, ARSessionDelegate {
         material.color = .init(tint: .white, texture: .none)
 
         textModelComp.materials[0] = material
-        textModelComp.mesh = .generateText("Hello",
+        textModelComp.mesh = .generateText(vm.myGoal,
                                            extrusionDepth: 0.01,
                                            font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
                                            containerFrame: CGRect(),

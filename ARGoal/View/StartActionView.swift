@@ -44,15 +44,13 @@ struct StartActionView: View {
                 StartButtonView()
                     .onTapGesture {
                         self.showMyGoal = true
+                        vm.onLoad()
                     }
                     .fullScreenCover(isPresented: self.$showMyGoal, content: {
                         StartActionARViewContainer(vm: vm)
-                            .onAppear(perform: {
-                                vm.onLoad()
-                            })
                     })
             }
-            .padding(.top, 100)
+            .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)
             .navigationBarHidden(true)
         }
