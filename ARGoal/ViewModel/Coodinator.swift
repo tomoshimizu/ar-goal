@@ -35,8 +35,41 @@ class Coordinator: NSObject, ARSessionDelegate {
         
         // タップした座標に目標を表示
         if let result = results.first {
+            
             let anchor = AnchorEntity(raycastResult: result)
-            placeMyGoal(arView: arView, anchorEntity: anchor)
+            
+            // シーンを読み込み
+            let textAnchor = try! Experience.loadGoal()
+
+            // テキストを取得
+            let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
+            
+            // スケールを設定
+            textAnchor.myGoal!.parent!.scale = [1, 1, 1]
+
+            // テキストマテリアルの作成
+            var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
+
+            var material = SimpleMaterial()
+            material.color = .init(tint: .white, texture: .none)
+
+            textModelComp.materials[0] = material
+            textModelComp.mesh = .generateText(vm.myGoal,
+                                               extrusionDepth: 0.01,
+                                               font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
+                                               containerFrame: CGRect(),
+                                               alignment: .center,
+                                               lineBreakMode: .byCharWrapping)
+            
+            // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
+            let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
+            textEntity.position = [-textWidth/2, 0, 0]
+            
+            // オブジェクトを配置
+            textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
+            
+            anchor.addChild(textAnchor)
+            arView.scene.addAnchor(anchor)
         }
     }
     
@@ -77,7 +110,7 @@ class Coordinator: NSObject, ARSessionDelegate {
         }
         
         if let data = UserDefaults.standard.data(forKey: "worldMap") {
-            
+                        
             guard let worldMap = try? NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self,
                                                                          from: data) else {
                 return
@@ -85,7 +118,39 @@ class Coordinator: NSObject, ARSessionDelegate {
             
             for anchor in worldMap.anchors {
                 let anchorEntity = AnchorEntity(anchor: anchor)
-                placeMyGoal(arView: arView, anchorEntity: anchorEntity)
+                
+                // シーンを読み込み
+                let textAnchor = try! Experience.loadGoal()
+
+                // テキストを取得
+                let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
+                
+                // スケールを設定
+                textAnchor.myGoal!.parent!.scale = [1, 1, 1]
+
+                // テキストマテリアルの作成
+                var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
+
+                var material = SimpleMaterial()
+                material.color = .init(tint: .white, texture: .none)
+
+                textModelComp.materials[0] = material
+                textModelComp.mesh = .generateText(vm.myGoal,
+                                                   extrusionDepth: 0.01,
+                                                   font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
+                                                   containerFrame: CGRect(),
+                                                   alignment: .center,
+                                                   lineBreakMode: .byCharWrapping)
+                
+                // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
+                let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
+                textEntity.position = [-textWidth/2, 0, 0]
+                
+                // オブジェクトを配置
+                textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
+                
+                anchorEntity.addChild(textAnchor)
+                arView.scene.addAnchor(anchorEntity)
             }
             
             let configuration = ARWorldTrackingConfiguration()
@@ -103,7 +168,7 @@ class Coordinator: NSObject, ARSessionDelegate {
         }
         
         let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
+        configuration.planeDetection = .vertical
         arView.session.run(configuration,options: [.removeExistingAnchors, .resetTracking])
         
         let userDefaults = UserDefaults.standard

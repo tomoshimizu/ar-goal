@@ -11,7 +11,7 @@ struct ResetButtonView: View {
     
     var body: some View {
         HStack {
-            Text(Message.reset)
+            Text(Message.resetGoal)
                 .font(Font.custom(FontName.higaMaruProNW4, size: 16))
         }
         .foregroundColor(Color(hex: ColorCode.theme))

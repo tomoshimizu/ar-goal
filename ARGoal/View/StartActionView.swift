@@ -13,7 +13,6 @@ import RealityKit
 
 struct StartActionView: View {
     
-    @ObservedObject var vm: ViewModel
     @State private var showMyGoal: Bool = false
     
     var body: some View {
@@ -44,10 +43,9 @@ struct StartActionView: View {
                 StartButtonView()
                     .onTapGesture {
                         self.showMyGoal = true
-                        vm.onLoad()
                     }
                     .fullScreenCover(isPresented: self.$showMyGoal, content: {
-                        StartActionARViewContainer(vm: vm)
+                        ShowMyGoal()
                     })
             }
             .padding(.top, 80)

@@ -1,18 +1,15 @@
 //
-//  SettingNotificationView.swift
+//  ShowMyGoalView.swift
 //  ARGoal
 //
-//  Created by Tomo Shimizu on 2022/09/10.
+//  Created by Tomo Shimizu on 2022/09/28.
 //
 
 import SwiftUI
-import UserNotifications
 
-// MARK: - 通知設定
-
-struct SettingNotificationView: View {
+struct ShowMyGoal: View {
     
-    @ObservedObject var vm: ViewModel
+    @State var showAlert = false
     
     @Environment(\.presentationMode) var presentation
     
@@ -23,38 +20,39 @@ struct SettingNotificationView: View {
                 .edgesIgnoringSafeArea(.all)
                         
             VStack(spacing: 24) {
-                Image("notification")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 250)
                 
                 VStack(alignment: .center, spacing: 16) {
-                    Text(Message.settingNotification)
+                    Text(Message.showMyGoal)
                         .foregroundColor(Color(hex: ColorCode.theme))
                         .font(Font.custom(FontName.higaMaruProNW4, size: 20))
-                        .padding()
-                    Text(Message.settingNotificationDescription)
+                    Text(Message.showMyGoalDescription)
                         .foregroundColor(Color(hex: ColorCode.description))
                         .font(Font.custom(FontName.higaMaruProNW4, size: 12))
                         .lineSpacing(5)
                         .multilineTextAlignment(.center)
                 }
-
-                TimeEditPicker(vm: vm)
+                
+                // TODO: - ARView
                 
                 HStack {
-                    Button(action: {
-                        self.presentation.wrappedValue.dismiss()
-                    }, label: {
-                        BackButtonView()
-                    })
                     Spacer()
-                    NavigationLink(destination: StartActionView()) {
-                        NextButtonView()
+                    
+                    Button(action: {
+                        self.showAlert = true
+                    }) {
+                        ResetButtonView()
                     }
-                    .simultaneousGesture(TapGesture().onEnded {
-                        vm.setPushNotification()
-                    })
+                    .alert(isPresented: self.$showAlert) {
+                        Alert(title: Text(""),
+                              message: Text(Message.resetConfirm),
+                              primaryButton: .cancel(Text(Message.cancel)),
+                              secondaryButton: .destructive(Text(Message.reset),
+                                                            action: {
+                            // TODO: - リセットする処理
+                        }))
+                    }
+                    
+                    Spacer()
                 }
             }
             .padding(.top, 80)
@@ -63,4 +61,3 @@ struct SettingNotificationView: View {
         }
     }
 }
-

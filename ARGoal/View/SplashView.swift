@@ -30,7 +30,11 @@ struct SplashView: View {
                 }
             }
         } else {
-            SettingGoalView()
+            // TODO: - 目標設定済みであれば設定画面へ遷移しない
+            if UserDefaults.standard.object(forKey: "isGoalSet") != nil {
+            } else {
+                SettingGoalView()
+            }
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D30A330F28DFDFB300D0A694 /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30A330E28DFDFB300D0A694 /* ResetButtonView.swift */; };
+		D314002528E45BF700C78FF7 /* ShowMyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314002428E45BF700C78FF7 /* ShowMyGoalView.swift */; };
 		D315F39928CE9960009D963F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315F39828CE9960009D963F /* Constants.swift */; };
 		D315F39E28CE9F8C009D963F /* SettingPositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315F39D28CE9F8C009D963F /* SettingPositionView.swift */; };
 		D315F3A028CEAF88009D963F /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315F39F28CEAF88009D963F /* StartButtonView.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		D30A330E28DFDFB300D0A694 /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
+		D314002428E45BF700C78FF7 /* ShowMyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMyGoalView.swift; sourceTree = "<group>"; };
 		D315F39828CE9960009D963F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D315F39D28CE9F8C009D963F /* SettingPositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPositionView.swift; sourceTree = "<group>"; };
 		D315F39F28CEAF88009D963F /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				D31AEEAB28DD83CC004B4C2A /* SplashView.swift */,
 				D31AEEAE28DD8863004B4C2A /* StartActionView.swift */,
+				D314002428E45BF700C78FF7 /* ShowMyGoalView.swift */,
 				D315F39A28CE9ABB009D963F /* ViewParts */,
 				D31AEEB228DD8A6F004B4C2A /* Setting */,
 			);
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D314002528E45BF700C78FF7 /* ShowMyGoalView.swift in Sources */,
 				D33F40C528CAB66E00FF51ED /* ViewModel.swift in Sources */,
 				D3F01E5528CC385100DEC0A2 /* Color.swift in Sources */,
 				D31AEEAA28DD6B4E004B4C2A /* BackButtonView.swift in Sources */,
