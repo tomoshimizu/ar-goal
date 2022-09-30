@@ -35,11 +35,14 @@ struct SettingNotificationView: View {
                         .foregroundColor(Color(hex: ColorCode.theme))
                         .font(Font.custom(FontName.higaMaruProNW4, size: 20))
                         .padding()
-                    Text(Message.settingNotificationDescription)
-                        .foregroundColor(Color(hex: ColorCode.description))
-                        .font(Font.custom(FontName.higaMaruProNW4, size: 12))
-                        .lineSpacing(5)
-                        .multilineTextAlignment(.center)
+                    VStack(alignment: .center, spacing: 5) {
+                        Text(Message.settingNotificationDescription1)
+                            .foregroundColor(Color(hex: ColorCode.description))
+                            .font(Font.custom(FontName.higaMaruProNW4, size: 12))
+                        Text(Message.settingNotificationDescription2)
+                            .foregroundColor(Color(hex: ColorCode.description))
+                            .font(Font.custom(FontName.higaMaruProNW4, size: 12))
+                    }
                 }
 
                 TimeEditPicker(vm: vm)

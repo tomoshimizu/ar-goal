@@ -37,13 +37,13 @@ class Coordinator: NSObject, ARSessionDelegate {
         if let result = results.first {
             
             let anchor = AnchorEntity(raycastResult: result)
-            
+
             // シーンを読み込み
             let textAnchor = try! Experience.loadGoal()
 
             // テキストを取得
             let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
-            
+
             // スケールを設定
             textAnchor.myGoal!.parent!.scale = [1, 1, 1]
 
@@ -60,14 +60,14 @@ class Coordinator: NSObject, ARSessionDelegate {
                                                containerFrame: CGRect(),
                                                alignment: .center,
                                                lineBreakMode: .byCharWrapping)
-            
+
             // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
             let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
             textEntity.position = [-textWidth/2, 0, 0]
-            
+
             // オブジェクトを配置
             textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
-            
+
             anchor.addChild(textAnchor)
             arView.scene.addAnchor(anchor)
         }
@@ -116,48 +116,48 @@ class Coordinator: NSObject, ARSessionDelegate {
                 return
             }
             
-            for anchor in worldMap.anchors {
-                let anchorEntity = AnchorEntity(anchor: anchor)
-                
-                // シーンを読み込み
-                let textAnchor = try! Experience.loadGoal()
-
-                // テキストを取得
-                let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
-                
-                // スケールを設定
-                textAnchor.myGoal!.parent!.scale = [1, 1, 1]
-
-                // テキストマテリアルの作成
-                var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
-
-                var material = SimpleMaterial()
-                material.color = .init(tint: .white, texture: .none)
-
-                textModelComp.materials[0] = material
-                textModelComp.mesh = .generateText(UserDefaults.standard.string(forKey: "myGoal") ?? "",
-                                                   extrusionDepth: 0.01,
-                                                   font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
-                                                   containerFrame: CGRect(),
-                                                   alignment: .center,
-                                                   lineBreakMode: .byCharWrapping)
-                
-                // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
-                let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
-                textEntity.position = [-textWidth/2, 0, 0]
-                
-                // オブジェクトを配置
-                textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
-                
-                anchorEntity.addChild(textAnchor)
-                arView.scene.addAnchor(anchorEntity)
-            }
-            
-            let configuration = ARWorldTrackingConfiguration()
-            configuration.initialWorldMap = worldMap
-            configuration.planeDetection = .vertical
-            
-            arView.session.run(configuration)
+//            for anchor in worldMap.anchors {
+//                let anchorEntity = AnchorEntity(anchor: anchor)
+//
+//                // シーンを読み込み
+//                let textAnchor = try! Experience.loadGoal()
+//
+//                // テキストを取得
+//                let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
+//
+//                // スケールを設定
+//                textAnchor.myGoal!.parent!.scale = [1, 1, 1]
+//
+//                // テキストマテリアルの作成
+//                var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
+//
+//                var material = SimpleMaterial()
+//                material.color = .init(tint: .white, texture: .none)
+//
+//                textModelComp.materials[0] = material
+//                textModelComp.mesh = .generateText(UserDefaults.standard.string(forKey: "myGoal") ?? "",
+//                                                   extrusionDepth: 0.01,
+//                                                   font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
+//                                                   containerFrame: CGRect(),
+//                                                   alignment: .center,
+//                                                   lineBreakMode: .byCharWrapping)
+//
+//                // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
+//                let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
+//                textEntity.position = [-textWidth/2, 0, 0]
+//
+//                // オブジェクトを配置
+//                textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
+//
+//                anchorEntity.addChild(textAnchor)
+//                arView.scene.addAnchor(anchorEntity)
+//            }
+//
+//            let configuration = ARWorldTrackingConfiguration()
+//            configuration.initialWorldMap = worldMap
+//            configuration.planeDetection = .vertical
+//
+//            arView.session.run(configuration)
         }
     }
     
