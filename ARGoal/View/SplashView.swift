@@ -10,9 +10,10 @@ import SwiftUI
 struct SplashView: View {
     
     @State private var isLoading = true
-
+    @State var isActive: Bool = false
+    
     var body: some View {
-        
+            
         if isLoading {
             ZStack(alignment: .center) {
                 Color(hex: ColorCode.background)
@@ -30,11 +31,7 @@ struct SplashView: View {
                 }
             }
         } else {
-            // TODO: - 目標設定済みであれば設定画面へ遷移しない
-            if UserDefaults.standard.object(forKey: "isGoalSet") != nil {
-            } else {
-                SettingGoalView()
-            }
+            ContentView()
         }
     }
 }

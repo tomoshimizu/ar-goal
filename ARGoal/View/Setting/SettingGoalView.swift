@@ -13,8 +13,10 @@ import Combine
 struct SettingGoalView: View {
     
     @ObservedObject var vm = ViewModel()
+        
+    @Binding var tabSelection: Int
     
-    @State var isActive = false
+    @State var isActive: Bool = false
     @State var showAlert = false
         
     var body: some View {
@@ -76,10 +78,11 @@ struct SettingGoalView: View {
                                   dismissButton: .default(Text(Message.close)))
                         }
                         
-                        NavigationLink(destination: SettingPositionView(vm: vm),
+                        NavigationLink(destination: SettingPositionView(vm: vm,
+                                                                        tabSelection: $tabSelection),
                                        isActive: self.$isActive) {
                             EmptyView()
-                        }.hidden()
+                        }
                     }
                 }
                 .padding(.top, 80)

@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-struct ShowMyGoal: View {
-    
+struct ShowMyGoalView: View {
+        
     @State var showAlert = false
-    
-    @Environment(\.presentationMode) var presentation
-    
+        
     var body: some View {
         
         ZStack {
@@ -33,27 +31,6 @@ struct ShowMyGoal: View {
                 }
                 
                 // TODO: - ARView
-                
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        self.showAlert = true
-                    }) {
-                        ResetButtonView()
-                    }
-                    .alert(isPresented: self.$showAlert) {
-                        Alert(title: Text(""),
-                              message: Text(Message.resetConfirm),
-                              primaryButton: .cancel(Text(Message.cancel)),
-                              secondaryButton: .destructive(Text(Message.reset),
-                                                            action: {
-                            // TODO: - リセットする処理
-                        }))
-                    }
-                    
-                    Spacer()
-                }
             }
             .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)

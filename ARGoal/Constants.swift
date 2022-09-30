@@ -19,20 +19,18 @@ struct Message {
     static let startActionDescription = "「明日から始める」は一生始まりません。\n今から始めるのです"
     static let showMyGoal = "目標を頭に焼き付けましょう"
     static let showMyGoalDescription = "目標を掲げた場所に\nカメラを向けてみましょう"
-    static let resetConfirm = "目標をリセットしますか？"
     static let next = "次へ"
     static let back = "戻る"
     static let close = "閉じる"
-    static let cancel = "キャンセル"
-    static let reset = "リセット"
-    static let confimGoal = "目標をみる"
-    static let resetGoal = "目標をリセットする"
+    static let confimGoal = "これでOK"
+    static let setting = "設定"
     static let pushTitle = "タイトル"
     static let pushBody = "本文"
 }
 
 struct ColorCode {
     static let theme = "1F2428"
+    static let accent = "79BEE6"
     static let description = "778899"
     static let background = "F5F5F5"
 }

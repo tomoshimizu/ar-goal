@@ -13,7 +13,13 @@ import RealityKit
 
 struct StartActionView: View {
     
+    @ObservedObject var vm: ViewModel
+    
+    @Binding var tabSelection: Int
+    
     @State private var showMyGoal: Bool = false
+    
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         
@@ -40,13 +46,23 @@ struct StartActionView: View {
                 }
                 
                 Spacer()
-                StartButtonView()
-                    .onTapGesture {
-                        self.showMyGoal = true
-                    }
-                    .fullScreenCover(isPresented: self.$showMyGoal, content: {
-                        ShowMyGoal()
+                
+                HStack {
+                    Button(action: {
+                        self.presentation.wrappedValue.dismiss()
+                    }, label: {
+                        BackButtonView()
                     })
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        UserDefaults.standard.set(vm.myGoal, forKey: "myGoal")
+                        self.tabSelection = 0
+                    }, label: {
+                        StartButtonView()
+                    })
+                }
             }
             .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)

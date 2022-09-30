@@ -14,6 +14,8 @@ import RealityKit
 struct SettingPositionView: View {
     
     @ObservedObject var vm: ViewModel
+        
+    @Binding var tabSelection: Int
     
     @Environment(\.presentationMode) var presentation
     
@@ -44,8 +46,11 @@ struct SettingPositionView: View {
                     }, label: {
                         BackButtonView()
                     })
+                    
                     Spacer()
-                    NavigationLink(destination: SettingNotificationView(vm: vm)) {
+                    
+                    NavigationLink(destination: SettingNotificationView(vm: vm,
+                                                                        tabSelection: $tabSelection)) {
                         NextButtonView()
                     }
                     .simultaneousGesture(TapGesture().onEnded {

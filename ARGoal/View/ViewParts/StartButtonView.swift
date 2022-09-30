@@ -14,7 +14,7 @@ struct StartButtonView: View {
             Text(Message.confimGoal)
                 .font(Font.custom(FontName.higaMaruProNW4, size: 20))
         }
-        .frame(width: UIScreen.main.bounds.width - (16 * 2), height: 70, alignment: .center)
+        .frame(width: (UIScreen.main.bounds.width - (16 * 2)) / 2, height: 70, alignment: .center)
         .background(Color(hex: ColorCode.theme))
         .foregroundColor(Color.white)
         .cornerRadius(40)
