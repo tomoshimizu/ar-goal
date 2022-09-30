@@ -78,8 +78,6 @@ class Coordinator: NSObject, ARSessionDelegate {
     
     /// ワールドマップの保存
     func saveWorldMap() {
-        print("保存")
-        
         guard let arView = arView else {
             return
         }
@@ -107,8 +105,6 @@ class Coordinator: NSObject, ARSessionDelegate {
     
     /// ワールドマップの読み込み
     func loadWorldMap() {
-        print("読み込みOK")
-        
         guard let arView = arView else {
             return
         }
@@ -159,7 +155,7 @@ class Coordinator: NSObject, ARSessionDelegate {
             
             let configuration = ARWorldTrackingConfiguration()
             configuration.initialWorldMap = worldMap
-            configuration.planeDetection = .horizontal
+            configuration.planeDetection = .vertical
             
             arView.session.run(configuration)
         }
