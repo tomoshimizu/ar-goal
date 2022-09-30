@@ -10,9 +10,9 @@ import SwiftUI
 struct SplashView: View {
     
     @State private var isLoading = true
-
+    
     var body: some View {
-        
+            
         if isLoading {
             ZStack(alignment: .center) {
                 Color(hex: ColorCode.background)
@@ -30,7 +30,7 @@ struct SplashView: View {
                 }
             }
         } else {
-            SettingGoalView()
+            ContentView()
         }
     }
 }

@@ -17,17 +17,20 @@ struct Message {
     static let settingNotificationDescription = "毎日目標を見ることで、\nゴールを見失いそうな心を取り戻すことができます"
     static let startAction = "さあ、始めましょう"
     static let startActionDescription = "「明日から始める」は一生始まりません。\n今から始めるのです"
+    static let showMyGoal = "目標を頭に焼き付けましょう"
+    static let showMyGoalDescription = "目標を掲げた場所に\nカメラを向けてみましょう"
     static let next = "次へ"
     static let back = "戻る"
     static let close = "閉じる"
-    static let confimGoal = "目標をみる"
-    static let reset = "目標をリセットする"
+    static let confimGoal = "これでOK"
+    static let setting = "設定"
     static let pushTitle = "タイトル"
     static let pushBody = "本文"
 }
 
 struct ColorCode {
     static let theme = "1F2428"
+    static let accent = "79BEE6"
     static let description = "778899"
     static let background = "F5F5F5"
 }

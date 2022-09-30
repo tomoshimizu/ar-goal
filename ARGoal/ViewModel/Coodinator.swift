@@ -35,8 +35,41 @@ class Coordinator: NSObject, ARSessionDelegate {
         
         // タップした座標に目標を表示
         if let result = results.first {
+            
             let anchor = AnchorEntity(raycastResult: result)
-            placeMyGoal(arView: arView, anchorEntity: anchor)
+            
+            // シーンを読み込み
+            let textAnchor = try! Experience.loadGoal()
+
+            // テキストを取得
+            let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
+            
+            // スケールを設定
+            textAnchor.myGoal!.parent!.scale = [1, 1, 1]
+
+            // テキストマテリアルの作成
+            var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
+
+            var material = SimpleMaterial()
+            material.color = .init(tint: .white, texture: .none)
+
+            textModelComp.materials[0] = material
+            textModelComp.mesh = .generateText(vm.myGoal,
+                                               extrusionDepth: 0.01,
+                                               font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
+                                               containerFrame: CGRect(),
+                                               alignment: .center,
+                                               lineBreakMode: .byCharWrapping)
+            
+            // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
+            let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
+            textEntity.position = [-textWidth/2, 0, 0]
+            
+            // オブジェクトを配置
+            textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
+            
+            anchor.addChild(textAnchor)
+            arView.scene.addAnchor(anchor)
         }
     }
     
@@ -45,6 +78,8 @@ class Coordinator: NSObject, ARSessionDelegate {
     
     /// ワールドマップの保存
     func saveWorldMap() {
+        print("保存")
+        
         guard let arView = arView else {
             return
         }
@@ -72,12 +107,14 @@ class Coordinator: NSObject, ARSessionDelegate {
     
     /// ワールドマップの読み込み
     func loadWorldMap() {
+        print("読み込みOK")
+        
         guard let arView = arView else {
             return
         }
         
         if let data = UserDefaults.standard.data(forKey: "worldMap") {
-            
+                        
             guard let worldMap = try? NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self,
                                                                          from: data) else {
                 return
@@ -85,12 +122,44 @@ class Coordinator: NSObject, ARSessionDelegate {
             
             for anchor in worldMap.anchors {
                 let anchorEntity = AnchorEntity(anchor: anchor)
-                placeMyGoal(arView: arView, anchorEntity: anchorEntity)
+                
+                // シーンを読み込み
+                let textAnchor = try! Experience.loadGoal()
+
+                // テキストを取得
+                let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
+                
+                // スケールを設定
+                textAnchor.myGoal!.parent!.scale = [1, 1, 1]
+
+                // テキストマテリアルの作成
+                var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
+
+                var material = SimpleMaterial()
+                material.color = .init(tint: .white, texture: .none)
+
+                textModelComp.materials[0] = material
+                textModelComp.mesh = .generateText(UserDefaults.standard.string(forKey: "myGoal") ?? "",
+                                                   extrusionDepth: 0.01,
+                                                   font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
+                                                   containerFrame: CGRect(),
+                                                   alignment: .center,
+                                                   lineBreakMode: .byCharWrapping)
+                
+                // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
+                let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
+                textEntity.position = [-textWidth/2, 0, 0]
+                
+                // オブジェクトを配置
+                textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
+                
+                anchorEntity.addChild(textAnchor)
+                arView.scene.addAnchor(anchorEntity)
             }
             
             let configuration = ARWorldTrackingConfiguration()
             configuration.initialWorldMap = worldMap
-            configuration.planeDetection = .vertical
+            configuration.planeDetection = .horizontal
             
             arView.session.run(configuration)
         }
@@ -103,7 +172,7 @@ class Coordinator: NSObject, ARSessionDelegate {
         }
         
         let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .horizontal
+        configuration.planeDetection = .vertical
         arView.session.run(configuration,options: [.removeExistingAnchors, .resetTracking])
         
         let userDefaults = UserDefaults.standard
@@ -111,73 +180,5 @@ class Coordinator: NSObject, ARSessionDelegate {
         userDefaults.synchronize()
         
         vm.isSaved = false
-    }
-    
-    /// Push通知時間を設定
-    func setPushNotification() {
-        let dateComponents = DateComponents(
-            calendar: Calendar.current,
-            timeZone: TimeZone.current,
-            hour: vm.pushHour,
-            minute: vm.pushMinute
-        )
-        let trigger = UNCalendarNotificationTrigger(
-            dateMatching: dateComponents,
-            repeats: true
-        )
-        
-        let content = UNMutableNotificationContent()
-        content.title = Message.pushTitle
-        content.body = Message.pushBody
-        content.sound = .default
-        
-        let request = UNNotificationRequest(
-            identifier: UUID().uuidString,
-            content: content,
-            trigger: trigger
-        )
-        
-        UNUserNotificationCenter.current().add(request)
-    }
-    
-    
-    // MARK: - Private Methods
-    
-    private func placeMyGoal(arView: ARView, anchorEntity: AnchorEntity) {
-        
-        // シーンを読み込み
-        let textAnchor = try! Experience.loadGoal()
-
-        // テキストを取得
-        let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
-        
-        // スケールを設定
-        textAnchor.myGoal!.parent!.scale = [1, 1, 1]
-
-        // テキストマテリアルの作成
-        var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
-
-        var material = SimpleMaterial()
-        material.color = .init(tint: .white, texture: .none)
-
-        textModelComp.materials[0] = material
-        textModelComp.mesh = .generateText(vm.myGoal,
-                                           extrusionDepth: 0.01,
-                                           font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
-                                           containerFrame: CGRect(),
-                                           alignment: .center,
-                                           lineBreakMode: .byCharWrapping)
-        
-        // x=0だと真ん中スタートになるので、テキスト幅/2を-xにずらす
-        let textWidth = textModelComp.mesh.bounds.max.x - textModelComp.mesh.bounds.min.x
-        textEntity.position = [-textWidth/2, 0, 0]
-        
-        // オブジェクトを配置
-        textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
-        
-        if let anchor = anchorEntity.anchor {
-            anchor.addChild(textEntity)
-            arView.scene.addAnchor(anchor)
-        }
     }
 }

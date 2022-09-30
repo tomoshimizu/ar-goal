@@ -14,6 +14,8 @@ struct SettingNotificationView: View {
     
     @ObservedObject var vm: ViewModel
     
+    @Binding var tabSelection: Int
+        
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
@@ -48,8 +50,11 @@ struct SettingNotificationView: View {
                     }, label: {
                         BackButtonView()
                     })
+                    
                     Spacer()
-                    NavigationLink(destination: StartActionView(vm: vm)) {
+                    
+                    NavigationLink(destination: StartActionView(vm: vm,
+                                                                tabSelection: $tabSelection)) {
                         NextButtonView()
                     }
                     .simultaneousGesture(TapGesture().onEnded {

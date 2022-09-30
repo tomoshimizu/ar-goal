@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import ARKit
-import RealityKit
 
 // MARK: - 位置設定
 
 struct SettingPositionView: View {
     
     @ObservedObject var vm: ViewModel
+        
+    @Binding var tabSelection: Int
     
     @Environment(\.presentationMode) var presentation
     
@@ -36,7 +36,7 @@ struct SettingPositionView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                SettingPositionARViewContainer(vm: vm)
+                ARViewContainer(vm: vm)
                 
                 HStack {
                     Button(action: {
@@ -44,8 +44,11 @@ struct SettingPositionView: View {
                     }, label: {
                         BackButtonView()
                     })
+                    
                     Spacer()
-                    NavigationLink(destination: SettingNotificationView(vm: vm)) {
+                    
+                    NavigationLink(destination: SettingNotificationView(vm: vm,
+                                                                        tabSelection: $tabSelection)) {
                         NextButtonView()
                     }
                     .simultaneousGesture(TapGesture().onEnded {
@@ -57,31 +60,5 @@ struct SettingPositionView: View {
             .padding([.horizontal, .bottom], 16)
             .navigationBarHidden(true)
         }
-    }
-}
-
-struct SettingPositionARViewContainer: UIViewRepresentable {
-
-    let vm: ViewModel
-
-    func makeUIView(context: Context) -> ARView {
-
-        let arView = ARView(frame: .zero)
-        arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
-                                                           action: #selector(Coordinator.tapped)))
-        context.coordinator.arView = arView
-        arView.session.delegate = context.coordinator
-        
-        vm.onSave = {
-            context.coordinator.saveWorldMap()
-        }
-
-        return arView
-    }
-
-    func updateUIView(_ uiView: ARView, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(vm: vm)
     }
 }

@@ -14,7 +14,12 @@ import RealityKit
 struct StartActionView: View {
     
     @ObservedObject var vm: ViewModel
+    
+    @Binding var tabSelection: Int
+    
     @State private var showMyGoal: Bool = false
+    
+    @Environment(\.presentationMode) var presentation
     
     var body: some View {
         
@@ -41,45 +46,27 @@ struct StartActionView: View {
                 }
                 
                 Spacer()
-                StartButtonView()
-                    .onTapGesture {
-                        self.showMyGoal = true
-                        vm.onLoad()
-                    }
-                    .fullScreenCover(isPresented: self.$showMyGoal, content: {
-                        StartActionARViewContainer(vm: vm)
+                
+                HStack {
+                    Button(action: {
+                        self.presentation.wrappedValue.dismiss()
+                    }, label: {
+                        BackButtonView()
                     })
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        UserDefaults.standard.set(vm.myGoal, forKey: "myGoal")
+                        self.tabSelection = 0
+                    }, label: {
+                        StartButtonView()
+                    })
+                }
             }
             .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)
             .navigationBarHidden(true)
         }
-    }
-}
-
-struct StartActionARViewContainer: UIViewRepresentable {
-
-    let vm: ViewModel
-
-    func makeUIView(context: Context) -> ARView {
-
-        let arView = ARView(frame: .zero)
-        context.coordinator.arView = arView
-        arView.session.delegate = context.coordinator
-        
-        vm.onLoad = {
-            context.coordinator.loadWorldMap()
-        }
-        vm.onClear = {
-            context.coordinator.clearWorldMap()
-        }
-
-        return arView
-    }
-
-    func updateUIView(_ uiView: ARView, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(vm: vm)
     }
 }
