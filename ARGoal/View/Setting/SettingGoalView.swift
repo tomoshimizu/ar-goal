@@ -12,7 +12,7 @@ import Combine
 
 struct SettingGoalView: View {
     
-    @ObservedObject var vm = ViewModel()
+    @ObservedObject var vm: ViewModel
         
     @Binding var tabSelection: Int
     

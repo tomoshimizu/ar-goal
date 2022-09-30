@@ -70,30 +70,3 @@ struct StartActionView: View {
         }
     }
 }
-
-struct StartActionARViewContainer: UIViewRepresentable {
-
-    let vm: ViewModel
-
-    func makeUIView(context: Context) -> ARView {
-
-        let arView = ARView(frame: .zero)
-        context.coordinator.arView = arView
-        arView.session.delegate = context.coordinator
-        
-        vm.onLoad = {
-            context.coordinator.loadWorldMap()
-        }
-        vm.onClear = {
-            context.coordinator.clearWorldMap()
-        }
-
-        return arView
-    }
-
-    func updateUIView(_ uiView: ARView, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(vm: vm)
-    }
-}

@@ -24,5 +24,4 @@ class ViewModel: ObservableObject {
     
     var onSave: () -> Void = { }
     var onLoad: () -> Void = { }
-    var onClear: () -> Void = { }
 }

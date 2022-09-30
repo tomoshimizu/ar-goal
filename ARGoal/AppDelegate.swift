@@ -10,7 +10,8 @@ import SwiftUI
 
 /*
  TODO: -
- ・Push通知から開いたらStartActionARViewを開く
+ ・◎Push通知 > アプリを開く
+ ・▲フリックで画面遷移
  */
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

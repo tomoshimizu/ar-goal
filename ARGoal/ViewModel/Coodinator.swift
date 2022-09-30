@@ -135,7 +135,7 @@ class Coordinator: NSObject, ARSessionDelegate {
                 material.color = .init(tint: .white, texture: .none)
 
                 textModelComp.materials[0] = material
-                textModelComp.mesh = .generateText(vm.myGoal,
+                textModelComp.mesh = .generateText(UserDefaults.standard.string(forKey: "myGoal") ?? "",
                                                    extrusionDepth: 0.01,
                                                    font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
                                                    containerFrame: CGRect(),
@@ -155,7 +155,7 @@ class Coordinator: NSObject, ARSessionDelegate {
             
             let configuration = ARWorldTrackingConfiguration()
             configuration.initialWorldMap = worldMap
-            configuration.planeDetection = .vertical
+            configuration.planeDetection = .horizontal
             
             arView.session.run(configuration)
         }

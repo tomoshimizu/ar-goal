@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var tabSelection = 0
+    @ObservedObject var vm = ViewModel()
+    
+    @State var tabSelection = UserDefaults.standard.object(forKey: "myGoal") != nil ? 0 : 1
     
     var body: some View {
         
         TabView(selection: $tabSelection) {
-            ShowMyGoalView()
+            ShowMyGoalView(vm: vm)
                 .tabItem {
                     VStack {
                         Image("eye")
@@ -23,7 +25,8 @@ struct ContentView: View {
                     }
             }.tag(0)
             
-            SettingGoalView(tabSelection: $tabSelection)
+            SettingGoalView(vm: vm,
+                            tabSelection: $tabSelection)
                 .tabItem {
                     VStack {
                         Image("setting")

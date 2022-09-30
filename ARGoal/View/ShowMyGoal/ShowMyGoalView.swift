@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ShowMyGoalView: View {
         
+    @ObservedObject var vm: ViewModel
+    
     @State var showAlert = false
         
     var body: some View {
@@ -30,7 +32,11 @@ struct ShowMyGoalView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                // TODO: - ARView
+                ARViewContainer(vm: vm)
+                    .onAppear(perform: {
+                        print("WorldMapを読み込んだ！")
+                        vm.onLoad()
+                    })
             }
             .padding(.top, 80)
             .padding([.horizontal, .bottom], 16)

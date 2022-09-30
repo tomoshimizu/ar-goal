@@ -15,6 +15,7 @@
 		D31AEEAC28DD83CC004B4C2A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AEEAB28DD83CC004B4C2A /* SplashView.swift */; };
 		D31AEEAF28DD8863004B4C2A /* StartActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AEEAE28DD8863004B4C2A /* StartActionView.swift */; };
 		D33F40C528CAB66E00FF51ED /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F40C428CAB66E00FF51ED /* ViewModel.swift */; };
+		D340581028E6B68800C88733 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340580F28E6B68800C88733 /* ARViewContainer.swift */; };
 		D34EE5DB28E6A68E008B6B94 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EE5DA28E6A68E008B6B94 /* ContentView.swift */; };
 		D3558FA228E3B82A0062B04C /* Coodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3558FA128E3B82A0062B04C /* Coodinator.swift */; };
 		D3783A7728E25D4000283805 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = D3783A7628E25D4000283805 /* Experience.rcproject */; };
@@ -39,6 +40,7 @@
 		D31AEEAE28DD8863004B4C2A /* StartActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartActionView.swift; sourceTree = "<group>"; };
 		D3349F4028DD585700D8BF5E /* ARGoal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ARGoal.entitlements; sourceTree = "<group>"; };
 		D33F40C428CAB66E00FF51ED /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		D340580F28E6B68800C88733 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		D34EE5DA28E6A68E008B6B94 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D3558FA128E3B82A0062B04C /* Coodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coodinator.swift; sourceTree = "<group>"; };
 		D3783A7628E25D4000283805 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 				D31AEEAE28DD8863004B4C2A /* StartActionView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		D340580E28E6B67B00C88733 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				D340580F28E6B68800C88733 /* ARViewContainer.swift */,
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		D34EE5DC28E6A6A9008B6B94 /* ShowMyGoal */ = {
@@ -142,6 +152,7 @@
 				D34EE5DA28E6A68E008B6B94 /* ContentView.swift */,
 				D31AEEB228DD8A6F004B4C2A /* Setting */,
 				D34EE5DC28E6A6A9008B6B94 /* ShowMyGoal */,
+				D340580E28E6B67B00C88733 /* AR */,
 				D315F39A28CE9ABB009D963F /* ViewParts */,
 			);
 			path = View;
@@ -239,6 +250,7 @@
 				D3F01E5528CC385100DEC0A2 /* Color.swift in Sources */,
 				D31AEEAA28DD6B4E004B4C2A /* BackButtonView.swift in Sources */,
 				D3D12FC028B1D9D60069DCF4 /* SettingGoalView.swift in Sources */,
+				D340581028E6B68800C88733 /* ARViewContainer.swift in Sources */,
 				D315F3A028CEAF88009D963F /* StartButtonView.swift in Sources */,
 				D3558FA228E3B82A0062B04C /* Coodinator.swift in Sources */,
 				D3F01E5728CC4CA000DEC0A2 /* NextButtonView.swift in Sources */,
