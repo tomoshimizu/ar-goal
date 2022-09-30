@@ -34,7 +34,6 @@ struct ShowMyGoalView: View {
                 
                 ARViewContainer(vm: vm)
                     .onAppear(perform: {
-                        print("WorldMapを読み込んだ！")
                         vm.onLoad()
                     })
             }

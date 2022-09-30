@@ -10,7 +10,6 @@ import SwiftUI
 struct SplashView: View {
     
     @State private var isLoading = true
-    @State var isActive: Bool = false
     
     var body: some View {
             

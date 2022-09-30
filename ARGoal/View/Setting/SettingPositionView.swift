@@ -52,7 +52,6 @@ struct SettingPositionView: View {
                         NextButtonView()
                     }
                     .simultaneousGesture(TapGesture().onEnded {
-                        print("WorldMapを保存した！")
                         vm.onSave()
                     })
                 }
