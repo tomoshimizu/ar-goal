@@ -53,7 +53,7 @@ class Coordinator: NSObject, ARSessionDelegate {
         
         // タップした座標に目標を表示
         if let result = results.first {
-                                    
+            
             let anchor = AnchorEntity(raycastResult: result)
 
             // シーンを読み込み
@@ -61,10 +61,10 @@ class Coordinator: NSObject, ARSessionDelegate {
 
             // テキストを取得
             let textEntity: Entity = textAnchor.myGoal!.children[1].children[0].children[0]
-            
+
             // スケールを設定
             textAnchor.myGoal!.parent!.scale = [1, 1, 1]
-                        
+
             // テキストマテリアルの作成
             var textModelComp: ModelComponent = (textEntity.components[ModelComponent.self])!
 
@@ -85,7 +85,7 @@ class Coordinator: NSObject, ARSessionDelegate {
 
             // オブジェクトを配置
             textAnchor.myGoal!.children[1].children[0].children[0].components.set(textModelComp)
-            
+
             anchor.addChild(textAnchor)
             arView.scene.addAnchor(anchor)
         }
@@ -99,13 +99,13 @@ class Coordinator: NSObject, ARSessionDelegate {
         guard let arView = arView else {
             return
         }
-        
+
         arView.session.getCurrentWorldMap { worldMap, error in
-            
+
             guard let map = worldMap else {
                 return
             }
-            
+
             do {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: map,
                                                             requiringSecureCoding: true)
@@ -118,18 +118,18 @@ class Coordinator: NSObject, ARSessionDelegate {
     
     /// ワールドマップの読み込み
     func loadWorldMap() {
-        guard UserDefaults.standard.bool(forKey: "goalWasSet"),
-              let myGoal = UserDefaults.standard.string(forKey: "myGoal"),
+        
+        guard let myGoal = UserDefaults.standard.string(forKey: "myGoal"),
               let arView = arView else {
             return
         }
-        
+
         guard let data = try? Data(contentsOf: self.worldMapURL),
               let worldMap = try? NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self,
                                                                     from: data) else {
             return
         }
-        
+
         for anchor in worldMap.anchors {
             let anchorEntity = AnchorEntity(anchor: anchor)
 
@@ -166,11 +166,11 @@ class Coordinator: NSObject, ARSessionDelegate {
             anchorEntity.addChild(textAnchor)
             arView.scene.addAnchor(anchorEntity)
         }
-        
+
         let configuration = ARWorldTrackingConfiguration()
         configuration.initialWorldMap = worldMap
         configuration.planeDetection = [.vertical]
-        arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        arView.session.run(configuration)
     }
     
     /// ワールドマップをクリア

@@ -11,9 +11,13 @@ import UserNotifications
 final class UserNotificationUtil: NSObject {
     
     static var shared = UserNotificationUtil()
-    
+    private var center = UNUserNotificationCenter.current()
+
     /// Push通知時間を設定
     func setPushNotification(hour: Int, minute: Int) {
+        
+        // 登録済み通知を削除
+        center.removeAllDeliveredNotifications()
         
         let dateComponents = DateComponents(
             calendar: Calendar.current,
@@ -37,6 +41,6 @@ final class UserNotificationUtil: NSObject {
             trigger: trigger
         )
         
-        UNUserNotificationCenter.current().add(request)
+        center.add(request)
     }
 }

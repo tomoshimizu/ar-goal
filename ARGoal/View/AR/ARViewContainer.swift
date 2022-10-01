@@ -20,18 +20,17 @@ struct ARViewContainer: UIViewRepresentable {
         if !UserDefaults.standard.bool(forKey: "goalWasSet") {
             arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
                                                                action: #selector(Coordinator.tapped)))
-            
-            vm.onSave = {
-                context.coordinator.saveWorldMap()
-            }
-            vm.onClear = {
-                context.coordinator.clearWorldMap()
-            }
         }
-
+        
         context.coordinator.arView = arView
         arView.session.delegate = context.coordinator
         
+        vm.onSave = {
+            context.coordinator.saveWorldMap()
+        }
+        vm.onClear = {
+            context.coordinator.clearWorldMap()
+        }
         context.coordinator.loadWorldMap()
 
         return arView
