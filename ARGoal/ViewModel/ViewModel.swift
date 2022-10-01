@@ -11,10 +11,8 @@ import UserNotifications
 class ViewModel: ObservableObject {
     
     /// ARView
-    @Published var isSaved: Bool = false
-    
     var onSave: () -> Void = { }
-    var onLoad: () -> Void = { }
+    var onClear: () -> Void = { }
     
     /// 目標
     @Published var myGoal: String = ""

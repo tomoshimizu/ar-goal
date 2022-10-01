@@ -15,9 +15,7 @@ struct ARViewContainer: UIViewRepresentable {
 
     func makeUIView(context: Context) -> ARView {
 
-        let arView = ARView(frame: .zero,
-                            cameraMode: .ar,
-                            automaticallyConfigureSession: true)
+        let arView = ARView(frame: .zero)
         arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
                                                            action: #selector(Coordinator.tapped)))
         context.coordinator.arView = arView
@@ -26,10 +24,9 @@ struct ARViewContainer: UIViewRepresentable {
         vm.onSave = {
             context.coordinator.saveWorldMap()
         }
-        vm.onLoad = {
-            context.coordinator.loadWorldMap()
+        vm.onClear = {
+            context.coordinator.clearWorldMap()
         }
-        
         context.coordinator.loadWorldMap()
 
         return arView

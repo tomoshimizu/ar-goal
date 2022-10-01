@@ -44,7 +44,7 @@
 		D34EE5DA28E6A68E008B6B94 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D3558FA128E3B82A0062B04C /* Coodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coodinator.swift; sourceTree = "<group>"; };
 		D3783A7628E25D4000283805 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
-		D3D12FBA28B1D9D60069DCF4 /* ARGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3D12FBA28B1D9D60069DCF4 /* AR目標.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR目標.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D12FBD28B1D9D60069DCF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGoalView.swift; sourceTree = "<group>"; };
 		D3D12FC328B1D9D70069DCF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */,
-				D315F39D28CE9F8C009D963F /* SettingPositionView.swift */,
 				D3F01E4F28CC326600DEC0A2 /* SettingNotificationView.swift */,
 				D31AEEAE28DD8863004B4C2A /* StartActionView.swift */,
 			);
@@ -100,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D314002428E45BF700C78FF7 /* ShowMyGoalView.swift */,
+				D315F39D28CE9F8C009D963F /* SettingPositionView.swift */,
 			);
 			path = ShowMyGoal;
 			sourceTree = "<group>";
@@ -115,7 +115,7 @@
 		D3D12FBB28B1D9D60069DCF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3D12FBA28B1D9D60069DCF4 /* ARGoal.app */,
+				D3D12FBA28B1D9D60069DCF4 /* AR目標.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 			);
 			name = ARGoal;
 			productName = "マカロンタワー";
-			productReference = D3D12FBA28B1D9D60069DCF4 /* ARGoal.app */;
+			productReference = D3D12FBA28B1D9D60069DCF4 /* AR目標.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -411,8 +411,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoshimizu.argoal;
-				PRODUCT_NAME = ARGoal;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomoshimizu.ar-goal";
+				PRODUCT_NAME = "AR目標";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -448,8 +448,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoshimizu.argoal;
-				PRODUCT_NAME = ARGoal;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomoshimizu.ar-goal";
+				PRODUCT_NAME = "AR目標";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
