@@ -61,7 +61,8 @@ struct SettingNotificationView: View {
                         NextButtonView()
                     }
                     .simultaneousGesture(TapGesture().onEnded {
-                        vm.setPushNotification()
+                        UserNotificationUtil.shared.setPushNotification(hour: vm.pushHour,
+                                                                        minute: vm.pushMinute)
                     })
                 }
             }

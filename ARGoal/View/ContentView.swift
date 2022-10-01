@@ -17,7 +17,8 @@ struct ContentView: View {
         
         TabView(selection: $tabSelection) {
             
-            ShowMyGoalView(vm: vm)
+            ShowMyGoalView(vm: vm,
+                           tabSelection: $tabSelection)
                 .tabItem {
                     VStack {
                         Image("eye")

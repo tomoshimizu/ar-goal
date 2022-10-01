@@ -53,7 +53,7 @@ class Coordinator: NSObject, ARSessionDelegate {
         
         // タップした座標に目標を表示
         if let result = results.first {
-                        
+                                    
             let anchor = AnchorEntity(raycastResult: result)
 
             // シーンを読み込み
@@ -118,7 +118,9 @@ class Coordinator: NSObject, ARSessionDelegate {
     
     /// ワールドマップの読み込み
     func loadWorldMap() {
-        guard let arView = arView else {
+        guard UserDefaults.standard.bool(forKey: "goalWasSet"),
+              let myGoal = UserDefaults.standard.string(forKey: "myGoal"),
+              let arView = arView else {
             return
         }
         
@@ -147,7 +149,7 @@ class Coordinator: NSObject, ARSessionDelegate {
             material.color = .init(tint: .white, texture: .none)
 
             textModelComp.materials[0] = material
-            textModelComp.mesh = .generateText("Hello",
+            textModelComp.mesh = .generateText(myGoal,
                                                extrusionDepth: 0.01,
                                                font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
                                                containerFrame: CGRect(),

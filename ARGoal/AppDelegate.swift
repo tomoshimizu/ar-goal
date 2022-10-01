@@ -8,6 +8,12 @@
 import UIKit
 import SwiftUI
 
+/*
+ TODO: -
+ ・プッシュ通知が重なる不具合を修正
+ ・動的にビューを更新
+ */
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -11,7 +11,9 @@ struct ShowMyGoalView: View {
         
     @ObservedObject var vm: ViewModel
     
-    @State var showAlert = false
+    @Binding var tabSelection: Int
+    
+    @State var showResetAlert = false
 
     var body: some View {
         
@@ -46,18 +48,39 @@ struct ShowMyGoalView: View {
                 
                 ARViewContainer(vm: vm)
 
-                HStack {
-                    Spacer()
-                    
-                    Button("保存") {
-                        vm.onSave()
-                        UserDefaults.standard.set(true, forKey: "goalWasSet")
-                    }.buttonStyle(.borderedProminent)
-                    
-                    Button("リセット") {
-                        vm.onClear()
-                        UserDefaults.standard.set(false, forKey: "goalWasSet")
-                    }.buttonStyle(.bordered)
+                if !UserDefaults.standard.bool(forKey: "goalWasSet") {
+                    HStack {
+                        Spacer()
+                        
+                        Button("保存") {
+                            UserDefaults.standard.set(true, forKey: "goalWasSet")
+                            
+                            vm.onSave()
+                        }.buttonStyle(.borderedProminent)
+                    }
+                } else {
+                    HStack {
+                        Spacer()
+                        
+                        Button("目標をリセット") {
+                            self.showResetAlert = true
+                        }.buttonStyle(.borderedProminent)
+                        
+                        .alert("確認", isPresented: $showResetAlert) {
+                            Button("キャンセル", role: .cancel) {
+                            }
+                            Button("リセット", role: .destructive) {
+                                UserDefaults.standard.set(false, forKey: "goalWasSet")
+                                UserDefaults.standard.removeObject(forKey: "myGoal")
+                                
+                                vm.onClear()
+                                
+                                self.tabSelection = 1
+                            }
+                        } message: {
+                            Text("目標をリセットしますか？")
+                        }
+                    }
                 }
             }
             .padding(.top, 80)
