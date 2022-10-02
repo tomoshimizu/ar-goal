@@ -15,6 +15,7 @@ class ViewModel: ObservableObject {
     
     /// 目標
     @Published var myGoal: String = ""
+    @Published var isSaved: Bool = false
     
     /// Push通知
     @Published var pushHour: Int = Calendar.current.component(.hour, from: Date())
