@@ -29,7 +29,8 @@ class Coordinator: NSObject, ARSessionDelegate {
     /// 目標を掲げる位置をタップ
     @objc func tapped(_ recognizer: UITapGestureRecognizer) {
         
-        guard let arView = arView else {
+        guard let arView = arView,
+              let myGoal = UserDefaults.standard.string(forKey: "myGoal") else {
             return
         }
         
@@ -58,7 +59,7 @@ class Coordinator: NSObject, ARSessionDelegate {
             material.color = .init(tint: .white, texture: .none)
 
             textModelComp.materials[0] = material
-            textModelComp.mesh = .generateText(vm.myGoal,
+            textModelComp.mesh = .generateText(myGoal,
                                                extrusionDepth: 0.01,
                                                font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
                                                containerFrame: CGRect(),
@@ -143,7 +144,7 @@ class Coordinator: NSObject, ARSessionDelegate {
                 material.color = .init(tint: .white, texture: .none)
 
                 textModelComp.materials[0] = material
-                textModelComp.mesh = .generateText(UserDefaults.standard.string(forKey: "myGoal") ?? "",
+                textModelComp.mesh = .generateText(myGoal,
                                                    extrusionDepth: 0.01,
                                                    font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
                                                    containerFrame: CGRect(),
@@ -184,7 +185,7 @@ class Coordinator: NSObject, ARSessionDelegate {
         
         userDefaults.removeObject(forKey: "worldMap")
         userDefaults.removeObject(forKey: "myGoal")
-        userDefaults.removeObject(forKey: "goalWasSet")
+        userDefaults.set(false, forKey: "goalWasSet")
         
         userDefaults.synchronize()
         

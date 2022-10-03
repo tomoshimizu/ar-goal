@@ -48,40 +48,16 @@ struct ShowMyGoalView: View {
                 
                 ARViewContainer(vm: vm)
 
-                if !UserDefaults.standard.bool(forKey: "goalWasSet") {
-                    HStack {
-                        Spacer()
-                        Button("保存") {
-                            vm.onSave()
-                        }.buttonStyle(.borderedProminent)
-                    }
-                    .alert("保存されました", isPresented: $vm.isSaved) {
-                        Button("OK") {
-                            UserDefaults.standard.set(true, forKey: "goalWasSet")
-                        }
-                    }
-                } else {
-                    HStack {
-                        Spacer()
-                        
-                        Button("目標をリセット") {
-                            self.showResetAlert = true
-                        }.buttonStyle(.borderedProminent)
-                        
-                        .alert("確認", isPresented: $showResetAlert) {
-                            Button("キャンセル", role: .cancel) {
-                            }
-                            Button("リセット", role: .destructive) {
-                                UserDefaults.standard.set(false, forKey: "goalWasSet")
-                                UserDefaults.standard.removeObject(forKey: "myGoal")
-                                
-                                vm.onClear()
-                                
-                                self.tabSelection = 1
-                            }
-                        } message: {
-                            Text("目標をリセットしますか？")
-                        }
+                HStack {
+                    Spacer()
+                    Button("保存") {
+                        vm.onSave()
+                    }.buttonStyle(.borderedProminent)
+                }
+                .alert("保存されました", isPresented: $vm.isSaved) {
+                    Button("OK") {
+                        UserDefaults.standard.set(vm.myGoal, forKey: "myGoal")
+                        UserDefaults.standard.set(true, forKey: "goalWasSet")
                     }
                 }
             }
