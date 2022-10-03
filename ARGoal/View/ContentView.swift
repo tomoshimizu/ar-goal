@@ -16,7 +16,9 @@ struct ContentView: View {
     var body: some View {
         
         TabView(selection: $tabSelection) {
-            ShowMyGoalView(vm: vm)
+            
+            ShowMyGoalView(vm: vm,
+                           tabSelection: $tabSelection)
                 .tabItem {
                     VStack {
                         Image("eye")
@@ -24,7 +26,7 @@ struct ContentView: View {
                         Text(Message.confimGoal)
                     }
             }.tag(0)
-            
+
             SettingGoalView(vm: vm,
                             tabSelection: $tabSelection)
                 .tabItem {

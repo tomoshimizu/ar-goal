@@ -11,8 +11,13 @@ import RealityKit
 
 class Coordinator: NSObject, ARSessionDelegate {
     
+    // MARK: - Variables
+    
     let vm: ViewModel
     var arView: ARView?
+    
+    
+    // MARK: - Initializer
     
     init(vm: ViewModel) {
         self.vm = vm
@@ -24,16 +29,16 @@ class Coordinator: NSObject, ARSessionDelegate {
     /// 目標を掲げる位置をタップ
     @objc func tapped(_ recognizer: UITapGestureRecognizer) {
         
-        guard let arView = arView else {
+        guard let arView = arView,
+              let myGoal = UserDefaults.standard.string(forKey: "myGoal") else {
             return
         }
-
+        
         let location = recognizer.location(in: arView)
         let results = arView.raycast(from: location,
                                      allowing: .estimatedPlane,
-                                     alignment: .any)
+                                     alignment: .horizontal)
         
-        // タップした座標に目標を表示
         if let result = results.first {
             
             let anchor = AnchorEntity(raycastResult: result)
@@ -54,7 +59,7 @@ class Coordinator: NSObject, ARSessionDelegate {
             material.color = .init(tint: .white, texture: .none)
 
             textModelComp.materials[0] = material
-            textModelComp.mesh = .generateText(vm.myGoal,
+            textModelComp.mesh = .generateText(myGoal,
                                                extrusionDepth: 0.01,
                                                font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
                                                containerFrame: CGRect(),
@@ -78,19 +83,18 @@ class Coordinator: NSObject, ARSessionDelegate {
     
     /// ワールドマップの保存
     func saveWorldMap() {
-        print("保存")
-        
         guard let arView = arView else {
             return
         }
 
-        arView.session.getCurrentWorldMap { [weak self] worldMap, error in
+        arView.session.getCurrentWorldMap { worldMap, error in
             
-            if error != nil {
+            if let _ = error {
                 return
             }
             
             if let worldMap = worldMap {
+                
                 guard let data = try? NSKeyedArchiver.archivedData(withRootObject: worldMap,
                                                                    requiringSecureCoding: true) else {
                     return
@@ -100,27 +104,28 @@ class Coordinator: NSObject, ARSessionDelegate {
                 userDefaults.set(data, forKey: "worldMap")
                 userDefaults.synchronize()
                 
-                self?.vm.isSaved = true
+                self.vm.isSaved = true
             }
         }
     }
     
     /// ワールドマップの読み込み
     func loadWorldMap() {
-        print("読み込みOK")
-        
-        guard let arView = arView else {
+                
+        guard let arView = arView,
+              let myGoal = UserDefaults.standard.string(forKey: "myGoal") else {
             return
         }
         
         if let data = UserDefaults.standard.data(forKey: "worldMap") {
-                        
+            
             guard let worldMap = try? NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self,
                                                                          from: data) else {
                 return
             }
             
             for anchor in worldMap.anchors {
+                
                 let anchorEntity = AnchorEntity(anchor: anchor)
                 
                 // シーンを読み込み
@@ -139,7 +144,7 @@ class Coordinator: NSObject, ARSessionDelegate {
                 material.color = .init(tint: .white, texture: .none)
 
                 textModelComp.materials[0] = material
-                textModelComp.mesh = .generateText(UserDefaults.standard.string(forKey: "myGoal") ?? "",
+                textModelComp.mesh = .generateText(myGoal,
                                                    extrusionDepth: 0.01,
                                                    font: UIFont(name: FontName.higaMaruProNW4, size: 0.05)!,
                                                    containerFrame: CGRect(),
@@ -156,6 +161,7 @@ class Coordinator: NSObject, ARSessionDelegate {
                 anchorEntity.addChild(textAnchor)
                 arView.scene.addAnchor(anchorEntity)
             }
+            
             
             let configuration = ARWorldTrackingConfiguration()
             configuration.initialWorldMap = worldMap
@@ -176,7 +182,11 @@ class Coordinator: NSObject, ARSessionDelegate {
         arView.session.run(configuration,options: [.removeExistingAnchors, .resetTracking])
         
         let userDefaults = UserDefaults.standard
+        
         userDefaults.removeObject(forKey: "worldMap")
+        userDefaults.removeObject(forKey: "myGoal")
+        userDefaults.set(false, forKey: "goalWasSet")
+        
         userDefaults.synchronize()
         
         vm.isSaved = false

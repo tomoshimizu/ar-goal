@@ -57,7 +57,10 @@ struct StartActionView: View {
                     Spacer()
                     
                     Button(action: {
+                        vm.onClear()
+                        
                         UserDefaults.standard.set(vm.myGoal, forKey: "myGoal")
+                        
                         self.tabSelection = 0
                     }, label: {
                         StartButtonView()

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D314002528E45BF700C78FF7 /* ShowMyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314002428E45BF700C78FF7 /* ShowMyGoalView.swift */; };
 		D315F39928CE9960009D963F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315F39828CE9960009D963F /* Constants.swift */; };
-		D315F39E28CE9F8C009D963F /* SettingPositionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315F39D28CE9F8C009D963F /* SettingPositionView.swift */; };
 		D315F3A028CEAF88009D963F /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D315F39F28CEAF88009D963F /* StartButtonView.swift */; };
 		D31AEEAA28DD6B4E004B4C2A /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AEEA928DD6B4E004B4C2A /* BackButtonView.swift */; };
 		D31AEEAC28DD83CC004B4C2A /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31AEEAB28DD83CC004B4C2A /* SplashView.swift */; };
@@ -18,6 +17,7 @@
 		D340581028E6B68800C88733 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340580F28E6B68800C88733 /* ARViewContainer.swift */; };
 		D34EE5DB28E6A68E008B6B94 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EE5DA28E6A68E008B6B94 /* ContentView.swift */; };
 		D3558FA228E3B82A0062B04C /* Coodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3558FA128E3B82A0062B04C /* Coodinator.swift */; };
+		D359EAE528E817DE00825A22 /* UserNotificationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D359EAE428E817DE00825A22 /* UserNotificationUtil.swift */; };
 		D3783A7728E25D4000283805 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = D3783A7628E25D4000283805 /* Experience.rcproject */; };
 		D3D12FBE28B1D9D60069DCF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D12FBD28B1D9D60069DCF4 /* AppDelegate.swift */; };
 		D3D12FC028B1D9D60069DCF4 /* SettingGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */; };
@@ -32,7 +32,6 @@
 /* Begin PBXFileReference section */
 		D314002428E45BF700C78FF7 /* ShowMyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMyGoalView.swift; sourceTree = "<group>"; };
 		D315F39828CE9960009D963F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D315F39D28CE9F8C009D963F /* SettingPositionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPositionView.swift; sourceTree = "<group>"; };
 		D315F39F28CEAF88009D963F /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
 		D31AEEA928DD6B4E004B4C2A /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		D31AEEAB28DD83CC004B4C2A /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -43,8 +42,9 @@
 		D340580F28E6B68800C88733 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		D34EE5DA28E6A68E008B6B94 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D3558FA128E3B82A0062B04C /* Coodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coodinator.swift; sourceTree = "<group>"; };
+		D359EAE428E817DE00825A22 /* UserNotificationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationUtil.swift; sourceTree = "<group>"; };
 		D3783A7628E25D4000283805 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
-		D3D12FBA28B1D9D60069DCF4 /* ARGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3D12FBA28B1D9D60069DCF4 /* AR目標.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR目標.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3D12FBD28B1D9D60069DCF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGoalView.swift; sourceTree = "<group>"; };
 		D3D12FC328B1D9D70069DCF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */,
-				D315F39D28CE9F8C009D963F /* SettingPositionView.swift */,
 				D3F01E4F28CC326600DEC0A2 /* SettingNotificationView.swift */,
 				D31AEEAE28DD8863004B4C2A /* StartActionView.swift */,
 			);
@@ -104,6 +103,14 @@
 			path = ShowMyGoal;
 			sourceTree = "<group>";
 		};
+		D359EAE328E817D100825A22 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D359EAE428E817DE00825A22 /* UserNotificationUtil.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		D3D12FB128B1D9D60069DCF4 = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +122,7 @@
 		D3D12FBB28B1D9D60069DCF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3D12FBA28B1D9D60069DCF4 /* ARGoal.app */,
+				D3D12FBA28B1D9D60069DCF4 /* AR目標.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 				D3783A7628E25D4000283805 /* Experience.rcproject */,
 				D3D12FBD28B1D9D60069DCF4 /* AppDelegate.swift */,
 				D315F39828CE9960009D963F /* Constants.swift */,
+				D359EAE328E817D100825A22 /* Util */,
 				D3F01E5328CC384800DEC0A2 /* Extension */,
 				D3F01E5228CC33A000DEC0A2 /* ViewModel */,
 				D3F01E5128CC339100DEC0A2 /* View */,
@@ -192,7 +200,7 @@
 			);
 			name = ARGoal;
 			productName = "マカロンタワー";
-			productReference = D3D12FBA28B1D9D60069DCF4 /* ARGoal.app */;
+			productReference = D3D12FBA28B1D9D60069DCF4 /* AR目標.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -251,6 +259,7 @@
 				D31AEEAA28DD6B4E004B4C2A /* BackButtonView.swift in Sources */,
 				D3D12FC028B1D9D60069DCF4 /* SettingGoalView.swift in Sources */,
 				D340581028E6B68800C88733 /* ARViewContainer.swift in Sources */,
+				D359EAE528E817DE00825A22 /* UserNotificationUtil.swift in Sources */,
 				D315F3A028CEAF88009D963F /* StartButtonView.swift in Sources */,
 				D3558FA228E3B82A0062B04C /* Coodinator.swift in Sources */,
 				D3F01E5728CC4CA000DEC0A2 /* NextButtonView.swift in Sources */,
@@ -260,7 +269,6 @@
 				D3D12FBE28B1D9D60069DCF4 /* AppDelegate.swift in Sources */,
 				D3F01E5028CC326600DEC0A2 /* SettingNotificationView.swift in Sources */,
 				D34EE5DB28E6A68E008B6B94 /* ContentView.swift in Sources */,
-				D315F39E28CE9F8C009D963F /* SettingPositionView.swift in Sources */,
 				D315F39928CE9960009D963F /* Constants.swift in Sources */,
 				D31AEEAC28DD83CC004B4C2A /* SplashView.swift in Sources */,
 			);
@@ -398,7 +406,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ARGoal/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "AR目標";
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "目標を拡張現実空間に表示するためにカメラを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
@@ -411,8 +419,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoshimizu.argoal;
-				PRODUCT_NAME = ARGoal;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomoshimizu.ar-goal";
+				PRODUCT_NAME = "AR目標";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -435,7 +443,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ARGoal/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "AR目標";
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "目標を拡張現実空間に表示するためにカメラを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
@@ -448,8 +456,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tomoshimizu.argoal;
-				PRODUCT_NAME = ARGoal;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tomoshimizu.ar-goal";
+				PRODUCT_NAME = "AR目標";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -16,17 +16,22 @@ struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
 
         let arView = ARView(frame: .zero)
-        arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
-                                                           action: #selector(Coordinator.tapped)))
+        
+        if !UserDefaults.standard.bool(forKey: "goalWasSet") {
+            arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
+                                                               action: #selector(Coordinator.tapped)))
+        }
+        
         context.coordinator.arView = arView
         arView.session.delegate = context.coordinator
         
         vm.onSave = {
             context.coordinator.saveWorldMap()
         }
-        vm.onLoad = {
-            context.coordinator.loadWorldMap()
+        vm.onClear = {
+            context.coordinator.clearWorldMap()
         }
+        context.coordinator.loadWorldMap()
 
         return arView
     }

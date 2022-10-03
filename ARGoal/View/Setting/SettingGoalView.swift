@@ -78,8 +78,8 @@ struct SettingGoalView: View {
                                   dismissButton: .default(Text(Message.close)))
                         }
                         
-                        NavigationLink(destination: SettingPositionView(vm: vm,
-                                                                        tabSelection: $tabSelection),
+                        NavigationLink(destination: SettingNotificationView(vm: vm,
+                                                                            tabSelection: $tabSelection),
                                        isActive: self.$isActive) {
                             EmptyView()
                         }
