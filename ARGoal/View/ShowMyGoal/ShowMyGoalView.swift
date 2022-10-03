@@ -56,7 +56,6 @@ struct ShowMyGoalView: View {
                 }
                 .alert("保存されました", isPresented: $vm.isSaved) {
                     Button("OK") {
-                        UserDefaults.standard.set(vm.myGoal, forKey: "myGoal")
                         UserDefaults.standard.set(true, forKey: "goalWasSet")
                     }
                 }
