@@ -12,7 +12,7 @@ struct Message {
     static let settingGoalDescription = "なりたい自分をイメージして"
     static let settingGoalError = "目標を15文字以内で入力してください"
     static let settingPosition = "目標を掲げましょう"
-    static let settingPositionDescription = "カメラを壁の方に向け、\n目標を掲げたい場所をタップし\n「保存」を押してください"
+    static let settingPositionDescription = "目標を掲げたい場所をタップすると目標が表示されます。\nその後「保存」を押してください"
     static let settingNotification = "通知時間を設定しましょう"
     static let settingNotificationDescription1 = "毎日目標を見ることで、"
     static let settingNotificationDescription2 = "ゴールを見失いそうな心を取り戻すことができます"

@@ -52,13 +52,12 @@ struct ShowMyGoalView: View {
                     HStack {
                         Spacer()
                         Button("保存") {
-                            UserDefaults.standard.set(true, forKey: "goalWasSet")
                             vm.onSave()
                         }.buttonStyle(.borderedProminent)
                     }
                     .alert("保存されました", isPresented: $vm.isSaved) {
-                        Button(role: .cancel, action: { }) {
-                            Text("OK")
+                        Button("OK") {
+                            UserDefaults.standard.set(true, forKey: "goalWasSet")
                         }
                     }
                 } else {
