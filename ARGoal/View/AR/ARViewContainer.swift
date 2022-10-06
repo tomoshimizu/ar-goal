@@ -14,13 +14,11 @@ struct ARViewContainer: UIViewRepresentable {
     let vm: ViewModel
 
     func makeUIView(context: Context) -> ARView {
-
+        
         let arView = ARView(frame: .zero)
         
-        if !UserDefaults.standard.bool(forKey: "goalWasSet") {
-            arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
-                                                               action: #selector(Coordinator.tapped)))
-        }
+        arView.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator,
+                                                           action: #selector(Coordinator.tapped)))
         
         context.coordinator.arView = arView
         arView.session.delegate = context.coordinator

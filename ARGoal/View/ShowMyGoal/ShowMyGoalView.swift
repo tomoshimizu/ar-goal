@@ -38,7 +38,7 @@ struct ShowMyGoalView: View {
                         Text(Message.settingPosition)
                             .foregroundColor(Color(hex: ColorCode.theme))
                             .font(Font.custom(FontName.higaMaruProNW4, size: 20))
-                        Text(Message.settingPositionDescription)
+                        Text(vm.worldMapStatus.rawValue)
                             .foregroundColor(Color(hex: ColorCode.description))
                             .font(Font.custom(FontName.higaMaruProNW4, size: 12))
                             .lineSpacing(5)
@@ -48,15 +48,17 @@ struct ShowMyGoalView: View {
                 
                 ARViewContainer(vm: vm)
 
-                HStack {
-                    Spacer()
-                    Button("保存") {
-                        vm.onSave()
-                    }.buttonStyle(.borderedProminent)
-                }
-                .alert("保存されました", isPresented: $vm.isSaved) {
-                    Button("OK") {
-                        UserDefaults.standard.set(true, forKey: "goalWasSet")
+                if !UserDefaults.standard.bool(forKey: "goalWasSet") {
+                    HStack {
+                        Spacer()
+                        Button("保存") {
+                            vm.onSave()
+                        }.buttonStyle(.borderedProminent)
+                    }
+                    .alert("目標を保存しました", isPresented: $vm.isSaved) {
+                        Button("OK") {
+                            UserDefaults.standard.set(true, forKey: "goalWasSet")
+                        }
                     }
                 }
             }

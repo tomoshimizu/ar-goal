@@ -27,15 +27,27 @@ struct ContentView: View {
                     }
             }.tag(0)
 
-            SettingGoalView(vm: vm,
-                            tabSelection: $tabSelection)
-                .tabItem {
-                    VStack {
-                        Image("setting")
-                            .renderingMode(.template)
-                        Text(Message.setting)
-                    }
-            }.tag(1)
+            if UserDefaults.standard.object(forKey: "myGoal") != nil {
+                CurrentMyGoalView(vm: vm,
+                                  tabSelection: $tabSelection)
+                    .tabItem {
+                        VStack {
+                            Image("setting")
+                                .renderingMode(.template)
+                            Text(Message.setting)
+                        }
+                }.tag(1)
+            } else {
+                SettingGoalView(vm: vm,
+                                tabSelection: $tabSelection)
+                    .tabItem {
+                        VStack {
+                            Image("setting")
+                                .renderingMode(.template)
+                            Text(Message.setting)
+                        }
+                }.tag(1)
+            }
         }
         .accentColor(Color(hex: ColorCode.accent))
     }
