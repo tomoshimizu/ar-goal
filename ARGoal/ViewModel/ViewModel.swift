@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+enum WorldMapStatus: String {
+    case available = "画面をタップし「保存」を押してください"
+    case notAvailable = "カメラをゆっくりと動かしていきましょう\n空間を読み込み中です・・・"
+}
+
 class ViewModel: ObservableObject {
     
     /// ARView
     var onSave: () -> Void = { }
     var onClear: () -> Void = { }
+    
+    @Published var worldMapStatus: WorldMapStatus = .notAvailable
     
     /// 目標
     @Published var myGoal: String = ""

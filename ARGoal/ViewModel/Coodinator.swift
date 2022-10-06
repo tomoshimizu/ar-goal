@@ -29,6 +29,11 @@ class Coordinator: NSObject, ARSessionDelegate {
     /// 目標を掲げる位置をタップ
     @objc func tapped(_ recognizer: UITapGestureRecognizer) {
         
+        // 既に保存されている場合はオブジェクトは追加しない
+        if UserDefaults.standard.object(forKey: "worldMap") != nil {
+            return
+        }
+
         guard let arView = arView,
               let myGoal = UserDefaults.standard.string(forKey: "myGoal") else {
             return
@@ -178,8 +183,8 @@ class Coordinator: NSObject, ARSessionDelegate {
         }
         
         let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = .vertical
-        arView.session.run(configuration,options: [.removeExistingAnchors, .resetTracking])
+        configuration.planeDetection = .horizontal
+        arView.session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
         
         let userDefaults = UserDefaults.standard
         
@@ -190,5 +195,17 @@ class Coordinator: NSObject, ARSessionDelegate {
         userDefaults.synchronize()
         
         vm.isSaved = false
+    }
+    
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        
+        switch frame.worldMappingStatus {
+        case .notAvailable, .limited, .extending:
+            vm.worldMapStatus = .notAvailable
+        case .mapped:
+            vm.worldMapStatus = .available
+        @unknown default:
+            fatalError()
+        }
     }
 }

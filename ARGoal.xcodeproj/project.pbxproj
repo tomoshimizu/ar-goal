@@ -23,6 +23,7 @@
 		D3D12FC028B1D9D60069DCF4 /* SettingGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */; };
 		D3D12FC428B1D9D70069DCF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3D12FC328B1D9D70069DCF4 /* Assets.xcassets */; };
 		D3D12FC728B1D9D70069DCF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3D12FC628B1D9D70069DCF4 /* Preview Assets.xcassets */; };
+		D3E08BEB28EEAD24005C1021 /* CurrentMyGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E08BEA28EEAD24005C1021 /* CurrentMyGoalView.swift */; };
 		D3E44F0D28CFF45C00623001 /* TimeEditPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E44F0C28CFF45C00623001 /* TimeEditPicker.swift */; };
 		D3F01E5028CC326600DEC0A2 /* SettingNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F01E4F28CC326600DEC0A2 /* SettingNotificationView.swift */; };
 		D3F01E5528CC385100DEC0A2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F01E5428CC385100DEC0A2 /* Color.swift */; };
@@ -49,6 +50,7 @@
 		D3D12FBF28B1D9D60069DCF4 /* SettingGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGoalView.swift; sourceTree = "<group>"; };
 		D3D12FC328B1D9D70069DCF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3D12FC628B1D9D70069DCF4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3E08BEA28EEAD24005C1021 /* CurrentMyGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMyGoalView.swift; sourceTree = "<group>"; };
 		D3E44F0C28CFF45C00623001 /* TimeEditPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEditPicker.swift; sourceTree = "<group>"; };
 		D3F01E4F28CC326600DEC0A2 /* SettingNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationView.swift; sourceTree = "<group>"; };
 		D3F01E5428CC385100DEC0A2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				D314002428E45BF700C78FF7 /* ShowMyGoalView.swift */,
+				D3E08BEA28EEAD24005C1021 /* CurrentMyGoalView.swift */,
 			);
 			path = ShowMyGoal;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				D3F01E5528CC385100DEC0A2 /* Color.swift in Sources */,
 				D31AEEAA28DD6B4E004B4C2A /* BackButtonView.swift in Sources */,
 				D3D12FC028B1D9D60069DCF4 /* SettingGoalView.swift in Sources */,
+				D3E08BEB28EEAD24005C1021 /* CurrentMyGoalView.swift in Sources */,
 				D340581028E6B68800C88733 /* ARViewContainer.swift in Sources */,
 				D359EAE528E817DE00825A22 /* UserNotificationUtil.swift in Sources */,
 				D315F3A028CEAF88009D963F /* StartButtonView.swift in Sources */,
